@@ -6,7 +6,7 @@ custom-trained CNN model instead of DeepFace.
 
 Performance: ~50-200ms per detection (10x faster than DeepFace!)
 """
-#we are happy
+#we are 
 import cv2
 import numpy as np
 import tensorflow as tf
