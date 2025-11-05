@@ -23,7 +23,7 @@ const emotionColors = {
   neutral: 'from-gray-300 to-gray-400',
 };
 
-const CameraPanel = ({ onEmotionDetected }) => {
+const CameraPanel = ({ onEmotionDetected, onEmotionHistory, isAnalyzing = true }) => {
   const webcamRef = useRef(null);
   const [emotion, setEmotion] = useState('neutral');
   const [confidence, setConfidence] = useState(0);
@@ -31,7 +31,7 @@ const CameraPanel = ({ onEmotionDetected }) => {
   const [isDetecting, setIsDetecting] = useState(false);
 
   const captureAndDetect = useCallback(async () => {
-    if (webcamRef.current && !isDetecting) {
+    if (webcamRef.current && !isDetecting && isAnalyzing) {
       setIsDetecting(true);
       const imageSrc = webcamRef.current.getScreenshot();
 
@@ -47,12 +47,22 @@ const CameraPanel = ({ onEmotionDetected }) => {
           if (onEmotionDetected) {
             onEmotionDetected(result.emotion);
           }
+
+          // Add to history for analytics
+          if (onEmotionHistory) {
+            onEmotionHistory({
+              timestamp: Date.now(),
+              emotion: result.emotion,
+              confidence: result.confidence,
+              emotions: result.all_emotions || {}
+            });
+          }
         }
       }
 
       setIsDetecting(false);
     }
-  }, [isDetecting, onEmotionDetected]);
+  }, [isDetecting, isAnalyzing, onEmotionDetected, onEmotionHistory]);
 
   useEffect(() => {
     // Detect emotion every 3 seconds
