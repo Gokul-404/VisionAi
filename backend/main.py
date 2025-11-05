@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from typing import Optional
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+# Load environment variables from .env 
 load_dotenv()
 
 app = FastAPI(title="Emotion-Aware AI Assistant API")
