@@ -42,7 +42,7 @@ async def root():
         "endpoints": ["/api/emotion", "/api/chat"]
     }
 
-
+#we are
 @app.post("/api/emotion")
 async def detect_emotion(image: str = Form(...)):
     """
