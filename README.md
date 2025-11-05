@@ -97,7 +97,7 @@ source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
-
+#use it
 # Create .env file
 copy .env.example .env  # Windows
 # OR
