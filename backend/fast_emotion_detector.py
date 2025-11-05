@@ -4,7 +4,7 @@ Fast Emotion Recognition using Custom Trained Model
 This module provides lightning-fast emotion detection using a lightweight
 custom-trained CNN model instead of DeepFace.
 
-Performance: ~50-200ms per detection (10x faster than DeepFace!)
+Performaanne: ~50-200ms per detection (10x faster than DeepFace!)
 """
 #we are 
 import cv2
