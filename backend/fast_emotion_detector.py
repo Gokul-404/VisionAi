@@ -45,7 +45,7 @@ class FastEmotionDetector:
         self.face_cascade = cv2.CascadeClassifier(
             cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
         )
-
+#we are happy
     def detect_faces(self, img):
         """
         Detect faces in image using Haar Cascade (faster than MTCNN).
